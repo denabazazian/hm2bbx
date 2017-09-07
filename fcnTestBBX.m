@@ -475,71 +475,7 @@ end % for all the rows
 
 end
     
-    
-  
 
-
-
-
-%   %check all the neighbors horizontally 
-%                 jj = j;
-%                 while (jj <= c) && (pred(i,jj) == pred(i,j)) && ((I(i,jj) == 0) || (I(i,jj) == Ncluster))           
-%                       I(i,jj) = Ncluster;
-%                       jj = jj+1;
-%                 end
-%                 Hi = i;
-%                 Hj = jj;
-%                 
-%                 %check all the neighbors vertically
-%                 ii = i;
-%                 while (ii <= r) && (pred(ii,j) == pred(i,j)) && ((I(ii,j) == 0) || (I(ii,j) == Ncluster))          
-%                       I(ii,j) = Ncluster;
-%                       ii = ii+1;
-%                 end
-%                 Vi = ii;
-%                 Vj = j;   
-%                  
-%                 % check all the neighbors diagonally
-%                 iii =i; jjj=j;
-%                 if i==r 
-%                     m=r-1;
-%                 else
-%                     m=r-1;
-%                 end
-%                 if j==c
-%                    n=c-1;
-%                 else
-%                    n=c-1;
-%                 end
-%              
-%                 while (iii <= m) && (jjj<=n) && (pred(iii+1, jjj+1) == pred(i,j)) && ((I(iii+1, jjj+1) == 0) || (I(iii+1, jjj+1) == Ncluster))
-%                      I(iii+1, jjj+1) = Ncluster; 
-%                      iii = iii+1;
-%                      jjj = jjj+1;
-%                 end
-%                 Di = iii;
-%                 Dj = jjj;                   
-%                                        
-%                 % check all the neighbors Rediagonally
-%                 iiii =i; jjjj=j;
-%                 if i==r 
-%                    m=r-1;
-%                 else
-%                    m=r-1;
-%                 end
-%                 if j == 1
-%                    n = 2;
-%                 else
-%                    n = 2;
-%                 end
-%                 
-%                 while  (iiii <= m) && (jjjj>=n) && (pred(iiii+1, jjjj-1) == pred(i,j)) && ((I(iiii+1, jjjj-1) == 0) || (I(iiii+1, jjjj-1) == Ncluster)) 
-%                      I(iiii+1, jjjj-1) = Ncluster; 
-%                      iiii = iiii+1;
-%                      jjjj = jjjj-1;
-%                 end
-%                 RDi = iiii;
-%                 rDj = jjjj;
     
     
     

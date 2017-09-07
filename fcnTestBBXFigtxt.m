@@ -27,33 +27,14 @@ opts.modelFamily = 'matconvnet' ;
 opts.gpus = [1] ;
 opts = vl_argparse(opts, varargin) ;
 
-%resPath = fullfile(opts.expDir, 'results.mat') ;
-%if exist(resPath)
-%  info = load(resPath) ;
-%  return ;
-%end
 
 if ~isempty(opts.gpus)
   gpuDevice(opts.gpus(1))
 end
 
+
 % -------------------------------------------------------------------------
 % Setup data
-% -------------------------------------------------------------------------
-
-% D = dir(['/home/dena/Projects/FCN-TextDetection/data/ch4_test_images','/*.jpg']);
-% Num = length(D(not([D.isdir])))
-% imdb = icdarSetup;
-% load('imdb.mat')
-
-% ------------------------------------------------------------------------- 
-% Get validation subset
-% -------------------------------------------------------------------------
-%val = find(imdb.images.set == 2 & imdb.images.segmentation) ;
-
-
-% -------------------------------------------------------------------------
-% Setup model
 % -------------------------------------------------------------------------
 
 opts.modelFamily = 'matconvnet' ;
@@ -122,20 +103,6 @@ for ImgNum = 1:NumImgs
     rgb = vl_imreadjpeg({rgbPath}) ;
     rgb = rgb{1} ;
 
-%for i = 1:numel(val)
-%for i = 51:51
-%for i = 13
-%   imId = val(i) ;
-%   name = imdb.images.name{imId} ;
-%   rgbPath = sprintf(imdb.paths.image, name) ;
-%   labelsPath = sprintf(imdb.paths.classSegmentation, name) ;
-
-  % Load an image and gt segmentation
-%   rgb = vl_imreadjpeg({rgbPath}) ;
-%   rgb = rgb{1} ;
-%   anno = imread(labelsPath) ;
-%   lb = single(anno) ;
-%   lb = mod(lb + 1, 256) ; % 0 = ignore, 1 = bkg
 
   % Subtract the mean (color)
     im = bsxfun(@minus, single(rgb), net.meta.normalization.averageImage) ;
@@ -434,7 +401,7 @@ end % for all the rows
     fileID = fopen(sprintf('/home/dena/Projects/DigitDetection/BBX-Rectangle/TextFiles/res_%s.txt',ImgName),'w');
 
 	fh = figure(100);
-	%imshow( im/255 , 'border', 'tight' ); %//show your image
+	
     imshow( inpImg , 'border', 'tight' ); %//show your image
 	hold on
 
@@ -479,70 +446,6 @@ ImgName
 end
     
     
-  
-
-
-
-
-%   %check all the neighbors horizontally 
-%                 jj = j;
-%                 while (jj <= c) && (pred(i,jj) == pred(i,j)) && ((I(i,jj) == 0) || (I(i,jj) == Ncluster))           
-%                       I(i,jj) = Ncluster;
-%                       jj = jj+1;
-%                 end
-%                 Hi = i;
-%                 Hj = jj;
-%                 
-%                 %check all the neighbors vertically
-%                 ii = i;
-%                 while (ii <= r) && (pred(ii,j) == pred(i,j)) && ((I(ii,j) == 0) || (I(ii,j) == Ncluster))          
-%                       I(ii,j) = Ncluster;
-%                       ii = ii+1;
-%                 end
-%                 Vi = ii;
-%                 Vj = j;   
-%                  
-%                 % check all the neighbors diagonally
-%                 iii =i; jjj=j;
-%                 if i==r 
-%                     m=r-1;
-%                 else
-%                     m=r-1;
-%                 end
-%                 if j==c
-%                    n=c-1;
-%                 else
-%                    n=c-1;
-%                 end
-%              
-%                 while (iii <= m) && (jjj<=n) && (pred(iii+1, jjj+1) == pred(i,j)) && ((I(iii+1, jjj+1) == 0) || (I(iii+1, jjj+1) == Ncluster))
-%                      I(iii+1, jjj+1) = Ncluster; 
-%                      iii = iii+1;
-%                      jjj = jjj+1;
-%                 end
-%                 Di = iii;
-%                 Dj = jjj;                   
-%                                        
-%                 % check all the neighbors Rediagonally
-%                 iiii =i; jjjj=j;
-%                 if i==r 
-%                    m=r-1;
-%                 else
-%                    m=r-1;
-%                 end
-%                 if j == 1
-%                    n = 2;
-%                 else
-%                    n = 2;
-%                 end
-%                 
-%                 while  (iiii <= m) && (jjjj>=n) && (pred(iiii+1, jjjj-1) == pred(i,j)) && ((I(iiii+1, jjjj-1) == 0) || (I(iiii+1, jjjj-1) == Ncluster)) 
-%                      I(iiii+1, jjjj-1) = Ncluster; 
-%                      iiii = iiii+1;
-%                      jjjj = jjjj-1;
-%                 end
-%                 RDi = iiii;
-%                 rDj = jjjj;
     
     
     
